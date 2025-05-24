@@ -16,7 +16,7 @@ sheet_id = "11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI"
 workbook = client.open_by_key(sheet_id)
 
 
-st.title("CGPA Calculater")
+st.title("GPA Calculater")
 name = st.text_input("Enter your Name")
 marks = st.number_input("Enter your marks",min_value=0,max_value=100)
 rollNo = st.text_input("Enter the roll no")
