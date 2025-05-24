@@ -92,6 +92,7 @@ if choose == 'CP':
             st.write(f"To Update Marks Contact Admin😊")
             row_count = len(df_maths)
             st.write(f"Based on Data of {row_count} Students")
+            st.write("Come Back later for precise results")
         else:
             st.header("Your RollNo must startwith 2024UEA____")
 if choose == 'OWO':
@@ -127,6 +128,7 @@ if choose == 'OWO':
                 st.write(f"To Update Marks Contact Admin😊")
             row_count = len(df_OWO)
             st.write(f"Based on Data of {row_count} Students")
+            st.write("Come Back later for precise results")
                 
         else:
             st.header("Your RollNo must startwith 2024UEA____")
