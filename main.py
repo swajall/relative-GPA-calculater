@@ -125,8 +125,8 @@ if choose == 'OWO':
                 st.header(cg_show)
                 st.write(f"Your Marks in Database are {marks2}")
                 st.write(f"To Update Marks Contact Admin😊")
-                row_count = len(df_OWO)
-                st.write(f"Based on Data of {row_count} Students")
+            row_count = len(df_OWO)
+            st.write(f"Based on Data of {row_count} Students")
                 
         else:
             st.header("Your RollNo must startwith 2024UEA____")
