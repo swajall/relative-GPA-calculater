@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
+import matplotlib.pyplotas plt
 
 scopes = [
     "https://www.googleapis.com/auth/spreadsheets"
@@ -90,6 +91,17 @@ if choose == 'CP':
                 cg_show = (calc(df_maths,marks2))
                 st.header(cg_show)
                 st.write(f"Your Marks in Database are {marks2}")
+            bins = [0,10,20,30,40,50,60,70,80,90,100]
+            labels = [f"{bins[i]}-{bins[i+1]-1}" for i in range(len(bins)-1)]
+            df_maths['Range'] = pd.cut(df_maths['Marks'], bins=bins, labels=labels, right=False)
+            counts = df_maths['Range'].value_counts().sort_index()
+            
+            fig, ax = plt.subplots()
+            counts.plot(kind='bar', ax=ax)
+            ax.set_xlabel('Marks Range')
+            ax.set_ylabel('Number of Students')
+            ax.set_title('Distribution of Marks')
+            st.pyplot(fig)
             st.write(f"To Update Marks Contact Admin😊")
             row_count = len(df_maths)
             st.write(f"Based on Data of {row_count} Students")
@@ -127,6 +139,17 @@ if choose == 'OWO':
                 st.header(cg_show)
                 st.write(f"Your Marks in Database are {marks2}")
                 st.write(f"To Update Marks Contact Admin😊")
+            bins = [0,10,20,30,40,50,60,70,80,90,100]
+            labels = [f"{bins[i]}-{bins[i+1]-1}" for i in range(len(bins)-1)]
+            df_maths['Range'] = pd.cut(df_maths['Marks'], bins=bins, labels=labels, right=False)
+            counts = df_maths['Range'].value_counts().sort_index()
+            
+            fig, ax = plt.subplots()
+            counts.plot(kind='bar', ax=ax)
+            ax.set_xlabel('Marks Range')
+            ax.set_ylabel('Number of Students')
+            ax.set_title('Distribution of Marks')
+            st.pyplot(fig)
             row_count = len(df_OWO)
             st.write(f"Based on Data of {row_count} Students")
             st.write("Come Back later for precise results")
