@@ -6,7 +6,7 @@ from google.oauth2.service_account import Credentials
 scopes = [
     "https://www.googleapis.com/auth/spreadsheets"
 ]
-creds = Credentials.from_service_account_file("C:/Users/gupta/OneDrive/Desktop/lgbt_texts/python/cg-calc/credential.json",scopes = scopes)
+creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"])
 client = gspread.authorize(creds)
 
 sheet_id = "11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI"
