@@ -89,9 +89,9 @@ if choose == 'CP':
                 cg_show = (calc(df_maths,marks2))
                 st.header(cg_show)
                 st.write(f"Your Marks in Database are {marks2}")
-                st.write(f"To Update Marks Contact Admin😊")
-                row_count = len(df_maths)
-                st.write(f"Based on Data of {row_count} Students")
+            st.write(f"To Update Marks Contact Admin😊")
+            row_count = len(df_maths)
+            st.write(f"Based on Data of {row_count} Students")
         else:
             st.header("Your RollNo must startwith 2024UEA____")
 if choose == 'OWO':
