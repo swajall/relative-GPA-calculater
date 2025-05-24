@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
-import matplotlib.pyplotas plt
+import matplotlib.pyplot as plt
 
 scopes = [
     "https://www.googleapis.com/auth/spreadsheets"
