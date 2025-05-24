@@ -55,7 +55,7 @@ def calc(df,marks):
     elif -1.5 < normal <= -1:
         cgpa = 4
     elif normal <= -1.5:
-        return "Go and Prepare for Backpaper"
+        return "You are Fail"
     else:
         return "Unable to calculate SGPA"
 
