@@ -141,9 +141,9 @@ if choose == 'OWO':
                 st.write(f"To Update Marks Contact Admin😊")
             bins = [0,10,20,30,40,50,60,70,80,90,100]
             labels = [f"{bins[i]}-{bins[i+1]-1}" for i in range(len(bins)-1)]
-            df_maths['Range'] = pd.cut(df_maths['Marks'], bins=bins, labels=labels, right=False)
-            counts = df_maths['Range'].value_counts().sort_index()
-            
+            df_OWO['Range'] = pd.cut(df_OWO['Marks'], bins=bins, labels=labels, right=False)
+            counts = df_OWO['Range'].value_counts().sort_index()
+
             fig, ax = plt.subplots()
             counts.plot(kind='bar', ax=ax)
             ax.set_xlabel('Marks Range')
