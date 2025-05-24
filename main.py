@@ -49,6 +49,7 @@ def calc(df,marks):
         cgpa = 7
     elif -0.5 < normal <= 0:
         cgpa = 6
+        st.write("Chud gye Guru")
     elif -1 < normal <= -0.5:
         cgpa = 5
     elif -1.5 < normal <= -1:
