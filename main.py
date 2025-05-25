@@ -13,7 +13,7 @@ creds = Credentials.from_service_account_info(
 )
 client = gspread.authorize(creds)
 
-sheet_id = "11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI"
+sheet_id = st.secrets["sheets"]["sheet_id"]
 workbook = client.open_by_key(sheet_id)
 
 
@@ -67,7 +67,7 @@ if choose == 'CP':
     
     st.write("CP selected")
     # try:
-    df_maths = pd.read_csv('https://docs.google.com/spreadsheets/d/11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI/export?format=csv')
+    df_maths = pd.read_csv(f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv')
     df_maths['Marks'] = pd.to_numeric(df_maths['Marks'], errors='coerce')
     # except FileNotFoundError:
     #     df_maths = pd.DataFrame(columns=['Name', 'Marks', 'Rollno'])
@@ -78,7 +78,7 @@ if choose == 'CP':
             worksheet = workbook.worksheet("CP")  # Change "Sheet1" to your actual sheet name
             if new_data[2] not in worksheet.col_values(3):     
                 worksheet.append_row(new_data)
-                df_maths = pd.read_csv('https://docs.google.com/spreadsheets/d/11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI/export?format=csv')
+                df_maths = pd.read_csv(f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv')
                 df_maths['Marks'] = pd.to_numeric(df_maths['Marks'], errors='coerce')
                 st.success("Data saved successfully!")
                 cg_show = (calc(df_maths,marks))
@@ -114,7 +114,7 @@ if choose == 'OWO':
     worksheet = workbook.worksheet("OWO")  # Change "Sheet1" to your actual sheet name
    
     
-    df_OWO = pd.read_csv("https://docs.google.com/spreadsheets/d/11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI/export?format=csv&gid=93641859")
+    df_OWO = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid=93641859")
     df_OWO['Marks'] = pd.to_numeric(df_OWO['Marks'], errors='coerce')
     # except FileNotFoundError:
     #     df_maths = pd.DataFrame(columns=['Name', 'Marks', 'Rollno'])
@@ -124,7 +124,7 @@ if choose == 'OWO':
             # Append to Google Sheet using gspread
             if new_data[2] not in worksheet.col_values(3):     
                
-                df_owo = pd.read_csv("https://docs.google.com/spreadsheets/d/11jd5_LDKeHeXjD4Z2RFmCBZnOaFE_QbGHTyk9enMeGI/export?format=csv&gid=93641859")
+                df_owo = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid=93641859")
                 df_owo['Marks'] = pd.to_numeric(df_owo['Marks'], errors='coerce')
                 worksheet.append_row(new_data)
                 st.success("Data saved successfully!")
