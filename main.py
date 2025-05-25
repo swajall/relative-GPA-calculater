@@ -17,7 +17,7 @@ sheet_id = st.secrets["sheets"]["sheet_id"]
 workbook = client.open_by_key(sheet_id)
 
 
-st.title("GPA Calculater")
+st.title("GPA Calculator")
 name = st.text_input("Enter your Name")
 marks = st.number_input("Enter your marks",min_value=0,max_value=100)
 rollNo = st.text_input("Enter the roll no")
