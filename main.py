@@ -127,7 +127,7 @@ if choose == 'DSA':
     st.write("DSA Selected")
     gid_dsa = "1028604013"
     display(gid_dsa)
-
+ 
 if choose == 'MATHS':
     st.write("MATHS Selected")
     gid_MATHS = "189204983"
