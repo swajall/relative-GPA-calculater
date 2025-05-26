@@ -62,40 +62,35 @@ def calc(df,marks):
 
     return f"Your Subject GPA is {cgpa} ☠️☠️"
 
-
-if choose == 'CP':
-    
-    st.write("CP selected")
-    # try:
-    df_maths = pd.read_csv(f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv')
-    df_maths['Marks'] = pd.to_numeric(df_maths['Marks'], errors='coerce')
-    # except FileNotFoundError:
-    #     df_maths = pd.DataFrame(columns=['Name', 'Marks', 'Rollno'])
+def display(gid):
+    worksheet = workbook.worksheet("OWO")  # Change "Sheet1" to your actual sheet name
+    df = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}")
+    df['Marks'] = pd.to_numeric(df['Marks'], errors='coerce')
     if st.button("Submit"):
         if rollNo.startswith("2024UEA"):
             new_data = [name, marks, rollNo]
             # Append to Google Sheet using gspread
-            worksheet = workbook.worksheet("CP")  # Change "Sheet1" to your actual sheet name
             if new_data[2] not in worksheet.col_values(3):     
+               
+                df_owo = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}")
+                df_owo['Marks'] = pd.to_numeric(df_owo['Marks'], errors='coerce')
                 worksheet.append_row(new_data)
-                df_maths = pd.read_csv(f'https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv')
-                df_maths['Marks'] = pd.to_numeric(df_maths['Marks'], errors='coerce')
                 st.success("Data saved successfully!")
-                cg_show = (calc(df_maths,marks))
+                cg_show = (calc(df,marks))
                 st.header(cg_show)
             else:
                 st.write("RollNo already exists in Database")
                 all_data = worksheet.get_all_values()
                 matching_rows = [row for row in all_data[1:] if row[2] == new_data[2]]
                 marks2 = float(matching_rows[0][1])
-                cg_show = (calc(df_maths,marks2))
+                cg_show = (calc(df,marks2))
                 st.header(cg_show)
                 st.write(f"Your Marks in Database are {marks2}")
             bins = [0,10,20,30,40,50,60,70,80,90,100]
             labels = [f"{bins[i]}-{bins[i+1]-1}" for i in range(len(bins)-1)]
-            df_maths['Range'] = pd.cut(df_maths['Marks'], bins=bins, labels=labels, right=False)
-            counts = df_maths['Range'].value_counts().sort_index()
-            
+            df['Range'] = pd.cut(df['Marks'], bins=bins, labels=labels, right=False)
+            counts = df['Range'].value_counts().sort_index()
+
             fig, ax = plt.subplots()
             counts.plot(kind='bar', ax=ax)
             ax.set_xlabel('Marks Range')
@@ -103,57 +98,37 @@ if choose == 'CP':
             ax.set_title('Distribution of Marks')
             st.pyplot(fig)
             st.write(f"To Update Marks Contact Admin😊")
-            row_count = len(df_maths)
+            row_count = len(df)
             st.write(f"Based on Data of {row_count} Students")
-            st.write("Come Back later for precise results")
-        else:
-            st.header("Your RollNo must startwith 2024UEA____")
-if choose == 'OWO':
-    st.write("OWO selected")
-    # try:
-    worksheet = workbook.worksheet("OWO")  # Change "Sheet1" to your actual sheet name
-   
-    
-    df_OWO = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid=93641859")
-    df_OWO['Marks'] = pd.to_numeric(df_OWO['Marks'], errors='coerce')
-    # except FileNotFoundError:
-    #     df_maths = pd.DataFrame(columns=['Name', 'Marks', 'Rollno'])
-    if st.button("Submit"):
-        if rollNo.startswith("2024UEA"):
-            new_data = [name, marks, rollNo]
-            # Append to Google Sheet using gspread
-            if new_data[2] not in worksheet.col_values(3):     
-               
-                df_owo = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid=93641859")
-                df_owo['Marks'] = pd.to_numeric(df_owo['Marks'], errors='coerce')
-                worksheet.append_row(new_data)
-                st.success("Data saved successfully!")
-                cg_show = (calc(df_OWO,marks))
-                st.header(cg_show)
-            else:
-                st.write("RollNo already exists in Database")
-                all_data = worksheet.get_all_values()
-                matching_rows = [row for row in all_data[1:] if row[2] == new_data[2]]
-                marks2 = float(matching_rows[0][1])
-                cg_show = (calc(df_OWO,marks2))
-                st.header(cg_show)
-                st.write(f"Your Marks in Database are {marks2}")
-                st.write(f"To Update Marks Contact Admin😊")
-            bins = [0,10,20,30,40,50,60,70,80,90,100]
-            labels = [f"{bins[i]}-{bins[i+1]-1}" for i in range(len(bins)-1)]
-            df_OWO['Range'] = pd.cut(df_OWO['Marks'], bins=bins, labels=labels, right=False)
-            counts = df_OWO['Range'].value_counts().sort_index()
-
-            fig, ax = plt.subplots()
-            counts.plot(kind='bar', ax=ax)
-            ax.set_xlabel('Marks Range')
-            ax.set_ylabel('Number of Students')
-            ax.set_title('Distribution of Marks')
-            st.pyplot(fig)
-            row_count = len(df_OWO)
-            st.write(f"Based on Data of {row_count} Students")
-            st.write("Come Back later for precise results")
                 
         else:
             st.header("Your RollNo must startwith 2024UEA____")
+if choose == 'CP':
+    st.write("CP selected")
+    gid_CP = "32898887"
+    display(gid_CP)
+
+if choose == 'OWO':
+    st.write("OWO selected")
+    gid_OWO = "93641859"
+    display(gid_OWO)
+
+if choose == 'NAS':
+    st.write("NAS selected")
+    gid_NAS = "801674070"
+    display(gid_NAS)
+
+if choose == 'EDC':
+    st.write("EDC selected")
+    gid_edc = "1224088647"
+    display(gid_edc)
     
+if choose == 'DSA':
+    st.write("DSA Selected")
+    gid_dsa = "1028604013"
+    display(gid_dsa)
+
+if choose == 'MATHS':
+    st.write("MATHS Selected")
+    gid_MATHS = "189204983"
+    display(gid_MATHS)
