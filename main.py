@@ -106,7 +106,8 @@ def display(gid,sheet_name):
 if choose == 'CP':
     st.write("CP selected")
     gid_CP = "32898887"
-    display(gid_CP)
+    sheetkanam = choose
+    display(gid_CP,sheetkanam)
 
 if choose == 'OWO':
     st.write("OWO selected")
