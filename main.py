@@ -62,8 +62,8 @@ def calc(df,marks):
 
     return f"Your Subject GPA is {cgpa} ☠️☠️"
 
-def display(gid):
-    worksheet = workbook.worksheet("OWO")  # Change "Sheet1" to your actual sheet name
+def display(gid,sheet_name):
+    worksheet = workbook.worksheet(sheet_name)  # Change "Sheet1" to your actual sheet name
     df = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}")
     df['Marks'] = pd.to_numeric(df['Marks'], errors='coerce')
     if st.button("Submit"):
@@ -111,24 +111,29 @@ if choose == 'CP':
 if choose == 'OWO':
     st.write("OWO selected")
     gid_OWO = "93641859"
-    display(gid_OWO)
+    sheetkanam = choose
+    display(gid_OWO,sheetkanam)
 
 if choose == 'NAS':
     st.write("NAS selected")
     gid_NAS = "801674070"
-    display(gid_NAS)
+    sheetkanam = choose
+    display(gid_NAS,sheetkanam)
 
 if choose == 'EDC':
     st.write("EDC selected")
     gid_edc = "1224088647"
-    display(gid_edc)
+    sheetkanam = choose
+    display(gid_edc,sheetkanam)
     
 if choose == 'DSA':
     st.write("DSA Selected")
     gid_dsa = "1028604013"
-    display(gid_dsa)
+    sheetkanam = choose
+    display(gid_dsa,sheetkanam)
  
 if choose == 'MATHS':
     st.write("MATHS Selected")
     gid_MATHS = "189204983"
-    display(gid_MATHS)
+    sheetkanam = choose
+    display(gid_MATHS,sheetkanam)
