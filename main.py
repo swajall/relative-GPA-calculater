@@ -21,7 +21,7 @@ st.title("GPA Calculator")
 name = st.text_input("Enter your Name")
 marks = st.number_input("Enter your marks",min_value=0,max_value=100)
 rollNo = st.text_input("Enter the roll no")
-choose = st.radio("select one subject",["CP","OWO"])
+choose = st.radio("select one subject",["CP","OWO","NAS","EDC","DSA","MATHS"])
 
 
 def calc(df,marks):
