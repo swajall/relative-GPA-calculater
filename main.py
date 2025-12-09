@@ -103,38 +103,38 @@ def display(gid,sheet_name):
                 
         else:
             st.header("Your RollNo must startwith 2024UEA____")
-if choose == 'CP':
-    st.write("CP selected")
+if choose == 'MML':
+    st.write("MML selected")
     gid_CP = "32898887"
     sheetkanam = choose
     display(gid_CP,sheetkanam)
 
-if choose == 'OWO':
-    st.write("OWO selected")
-    gid_OWO = "93641859"
-    sheetkanam = choose
-    display(gid_OWO,sheetkanam)
+# if choose == 'OWO':
+#     st.write("OWO selected")
+#     gid_OWO = "93641859"
+#     sheetkanam = choose
+#     display(gid_OWO,sheetkanam)
 
-if choose == 'NAS':
-    st.write("NAS selected")
-    gid_NAS = "801674070"
-    sheetkanam = choose
-    display(gid_NAS,sheetkanam)
+# if choose == 'NAS':
+#     st.write("NAS selected")
+#     gid_NAS = "801674070"
+#     sheetkanam = choose
+#     display(gid_NAS,sheetkanam)
 
-if choose == 'EDC':
-    st.write("EDC selected")
-    gid_edc = "1224088647"
-    sheetkanam = choose
-    display(gid_edc,sheetkanam)
+# if choose == 'EDC':
+#     st.write("EDC selected")
+#     gid_edc = "1224088647"
+#     sheetkanam = choose
+#     display(gid_edc,sheetkanam)
     
-if choose == 'DSA':
-    st.write("DSA Selected")
-    gid_dsa = "1028604013"
-    sheetkanam = choose
-    display(gid_dsa,sheetkanam)
+# if choose == 'DSA':
+#     st.write("DSA Selected")
+#     gid_dsa = "1028604013"
+#     sheetkanam = choose
+#     display(gid_dsa,sheetkanam)
  
-if choose == 'MATHS':
-    st.write("MATHS Selected")
-    gid_MATHS = "189204983"
-    sheetkanam = choose
-    display(gid_MATHS,sheetkanam)
+# if choose == 'MATHS':
+#     st.write("MATHS Selected")
+#     gid_MATHS = "189204983"
+#     sheetkanam = choose
+#     display(gid_MATHS,sheetkanam)
